@@ -3,16 +3,15 @@ const fs = require('fs');
 const path = require('path');
 
 const env = process.env.NODE_ENV || 'development';
-const logDir = 'log'; // 创建日志文件夹
+const logDir = 'log';
 
 // Create the log directory if it does not exist
 if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir);
 }
 
-const filename = path.join(logDir, 'results.log'); // 创建日志文件
+const filename = path.join(logDir, 'results.log');
 
-// 对 winston 包进行配置
 const logger = createLogger({
   // change level if in dev environment versus production
   level: env === 'production' ? 'info' : 'debug',
